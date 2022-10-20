@@ -1,26 +1,24 @@
 package dev.updooters.controllers;
 
 import dev.updooters.entities.Thread;
-import dev.updooters.repos.ThreadRepo;
+import dev.updooters.services.ThreadService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@Controller
+@RestController
 @CrossOrigin
 public class ThreadController {
 
     @Autowired
-    ThreadRepo threadRepo;
+    ThreadService threadService;
 
     @GetMapping("/threads")
-    @ResponseBody
-    public List<Thread> getAllThreads(){
-        return this.threadRepo.findAll();
+    public List<Thread> getThreads(){
+        return threadService.getAllThreads();
     }
 
 }
