@@ -20,18 +20,30 @@ public class Thread {
     @Column(name = "content")
     private String content;
 
+    @Column(name = "epoch")
+    private long epoch;
+
     @Column(name = "updoot")
     private int updoot;
 
     public Thread() {
     }
 
-    public Thread(int threadId, int accountId, String title, String content, int updoot) {
+    public Thread(int threadId, int accountId, String title, String content, long epoch, int updoot) {
         this.threadId = threadId;
         this.accountId = accountId;
         this.title = title;
         this.content = content;
+        this.epoch = epoch;
         this.updoot = updoot;
+    }
+
+    public long getEpoch() {
+        return epoch;
+    }
+
+    public void setEpoch(long epoch) {
+        this.epoch = epoch;
     }
 
     public int getThreadId() {
