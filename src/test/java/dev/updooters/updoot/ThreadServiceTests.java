@@ -28,10 +28,10 @@ public class ThreadServiceTests {
     @Test
     void create_post()
     {
-        Account account = new Account(0, "Username", "Password");
+        Account account = new Account(0, "TestUsername", "Password");
         Account savedAccount = accountRepo.save(account);
 
-        Thread thread = new Thread(0, savedAccount.getAccountId(), "Title", "I am a sentence", 0);
+        Thread thread = new Thread(0, savedAccount.getAccountId(), "Title", "I am a sentence", 0, 0);
         Thread savedThread = threadService.createThread(thread);
 
         Assertions.assertNotEquals(0, savedThread.getThreadId());
@@ -44,14 +44,14 @@ public class ThreadServiceTests {
         Account user = accountRepo.save(new Account(0, "testUser", "password"));
         Account fillerUser = accountRepo.save(new Account(0, "anotherUser", "password"));
 
-        threadRepo.save(new Thread(0, user.getAccountId(), "First Post","Trash", 0,0));
-        threadRepo.save(new Thread(0, user.getAccountId(), "Second Post","Trash", 0,0));
-        threadRepo.save(new Thread(0, user.getAccountId(), "Third Post","Trash", 0,0));
-        threadRepo.save(new Thread(0, user.getAccountId(), "Fourth Post","Trash", 0,0));
+        threadRepo.save(new Thread(0, user.getAccountId(), "First Post","Trash", 0L,0));
+        threadRepo.save(new Thread(0, user.getAccountId(), "Second Post","Trash", 0L,0));
+        threadRepo.save(new Thread(0, user.getAccountId(), "Third Post","Trash", 0L,0));
+        threadRepo.save(new Thread(0, user.getAccountId(), "Fourth Post","Trash", 0L,0));
 
-        threadRepo.save((new Thread(0, fillerUser.getAccountId(), "First Post", "more trash", 0, 0)));
-        threadRepo.save((new Thread(0, fillerUser.getAccountId(), "Second Post", "more trash", 0, 0)));
-        threadRepo.save((new Thread(0, fillerUser.getAccountId(), "Third Post", "more trash", 0, 0)));
+        threadRepo.save((new Thread(0, fillerUser.getAccountId(), "First Post", "more trash", 0L, 0)));
+        threadRepo.save((new Thread(0, fillerUser.getAccountId(), "Second Post", "more trash", 0L, 0)));
+        threadRepo.save((new Thread(0, fillerUser.getAccountId(), "Third Post", "more trash", 0L, 0)));
 
         // test
         Assertions.assertEquals(4, threadService.getAllUserThreads("testUser").size());

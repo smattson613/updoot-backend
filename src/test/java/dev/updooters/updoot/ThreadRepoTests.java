@@ -22,10 +22,10 @@ public class ThreadRepoTests {
     @Test
     void create_post()
     {
-        Account account = new Account(0, "Username", "Password");
+        Account account = new Account(0, "TestUsername", "Password");
         Account savedAccount = accountRepo.save(account);
 
-        Thread thread = new Thread(0, savedAccount.getAccountId(), "Title", "I am a sentence", 0);
+        Thread thread = new Thread(0, savedAccount.getAccountId(), "Title", "I am a sentence", 0, 0);
         Thread savedThread = threadRepo.save(thread);
 
         Assertions.assertNotEquals(0, savedThread.getThreadId());
