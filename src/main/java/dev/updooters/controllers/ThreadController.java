@@ -1,10 +1,10 @@
 package dev.updooters.controllers;
 
 import dev.updooters.entities.Thread;
+import dev.updooters.repos.ThreadRepo;
 import dev.updooters.services.ThreadService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
@@ -14,6 +14,11 @@ public class ThreadController {
 
     @Autowired
     ThreadService threadService;
+
+    @PostMapping("/threads")
+    public Thread createThread(@RequestBody Thread thread){
+        return this.threadService.createThread(thread);
+    }
 
     @GetMapping
     public List<Thread> getThreads(){
@@ -26,6 +31,7 @@ public class ThreadController {
     {
         return threadService.getAllUserThreads(username);
     }
+
 
 
 }
