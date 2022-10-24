@@ -9,14 +9,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Optional;
+
 @RestController
 @CrossOrigin
 public class AccountController {
     @Autowired
     LoginService loginService;
     @PostMapping("/login")
-    public Account login(@RequestBody LoginCredentials loginCredentials) {
-        Account login = loginService.validateUser(loginCredentials.getUsername(), loginCredentials.getPassword());
+    public Optional<Account> login(@RequestBody LoginCredentials loginCredentials) {
+        Optional<Account> login = loginService.validateUser(loginCredentials.getUsername(), loginCredentials.getPassword());
         return login;
 
     }

@@ -16,8 +16,8 @@ public class LoginServiceImpl implements LoginService {
     AccountRepo accountRepo;
 
     @Override
-    public Account validateUser(String username, String password) {
-        Account account =  accountRepo.findByUsername(username);
+    public Optional<Account> validateUser(String username, String password) {
+        Optional<Account> account =  accountRepo.findByUsername(username);
         return account;
     }
     }
