@@ -2,7 +2,9 @@ package dev.updooters.services;
 
 import dev.updooters.entities.Account;
 
+import java.util.Optional;
+
 public interface LoginService {
 
-    Account validateUser(String username, String password);
+    Optional<Account> validateUser(String username, String password);
 }
