@@ -18,6 +18,14 @@ public class LoginServiceImpl implements LoginService {
     @Override
     public Optional<Account> validateUser(String username, String password) {
         Optional<Account> account =  accountRepo.findByUsername(username);
+
+        if(!account.isPresent()) {
+            throw new RuntimeException("Input a valid name");
+        } if(!account.get().getPassword().equals(password)) {
+            throw new RuntimeException("The password does not match");
+        }
+
+
         return account;
     }
     }
