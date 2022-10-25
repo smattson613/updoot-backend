@@ -26,4 +26,12 @@ public class ReplyServiceImpl implements ReplyService{
     public List<Reply> getAllRepliesByPostId(int postId) {
         return this.replyRepo.findBythreadId(postId);
     }
+
+    @Override
+    public int updootReply(int replyId) {
+        Reply reply = this.replyRepo.findById(replyId).get();
+        reply.setUpdoot(reply.getUpdoot() + 1);
+        this.replyRepo.save(reply);
+        return reply.getUpdoot();
+    }
 }

@@ -31,4 +31,9 @@ public class ReplyController {
     public ResponseEntity<List<Reply>> getRepliesByThreadId(@PathVariable("id") int id){
         return new ResponseEntity<>(this.replyService.getAllRepliesByPostId(id), HttpStatus.OK);
     }
+
+    @PatchMapping("/replies/{id}")
+    public int updootReply(@PathVariable("id") int id){
+        return this.replyService.updootReply(id);
+    }
 }

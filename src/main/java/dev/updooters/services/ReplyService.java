@@ -11,4 +11,6 @@ public interface ReplyService {
     List<Reply> getAllReplies();
 
     List<Reply> getAllRepliesByPostId(int postId);
+
+    int updootReply(int replyId);
 }
