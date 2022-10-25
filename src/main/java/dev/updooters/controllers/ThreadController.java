@@ -32,6 +32,4 @@ public class ThreadController {
         return threadService.getAllUserThreads(username);
     }
 
-
-
 }
