@@ -15,7 +15,7 @@ public class ThreadController {
     @Autowired
     ThreadService threadService;
 
-    @PostMapping("/threads")
+    @PostMapping
     public Thread createThread(@RequestBody Thread thread){
         return this.threadService.createThread(thread);
     }
