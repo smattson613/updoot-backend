@@ -1,6 +1,8 @@
 package dev.updooters.services;
 
 import dev.updooters.entities.Account;
+import dev.updooters.exceptions.InvalidUsernameException;
+import dev.updooters.exceptions.PasswordMismatchException;
 import dev.updooters.repos.AccountRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,10 +20,11 @@ public class LoginServiceImpl implements LoginService {
         Optional<Account> account =  accountRepo.findByUsername(username);
 
         if(!account.isPresent()) {
-            throw new RuntimeException("Input a valid name");
+            throw new InvalidUsernameException();
         } if(!account.get().getPassword().equals(password)) {
-            throw new RuntimeException("The password does not match");
+            throw new PasswordMismatchException();
         }
+        account.get().setPassword("");
 
         return account;
     }
