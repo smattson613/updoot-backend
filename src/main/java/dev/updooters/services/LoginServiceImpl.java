@@ -10,8 +10,6 @@ import java.util.Optional;
 @Service
 public class LoginServiceImpl implements LoginService {
 
-
-
     @Autowired
     AccountRepo accountRepo;
 
@@ -25,10 +23,9 @@ public class LoginServiceImpl implements LoginService {
             throw new RuntimeException("The password does not match");
         }
 
-
         return account;
     }
-    }
+}
 
 
 
