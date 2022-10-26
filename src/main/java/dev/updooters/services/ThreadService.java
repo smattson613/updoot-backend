@@ -11,4 +11,6 @@ public interface ThreadService {
 
     List<Thread> getAllUserThreads(String username);
 
+    int updootThread(int threadId);
+
 }
