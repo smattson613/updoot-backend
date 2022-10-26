@@ -1,5 +1,6 @@
 package dev.updooters.services;
 
+import dev.updooters.entities.Reply;
 import dev.updooters.entities.Thread;
 import dev.updooters.exceptions.ContentEmptyException;
 import dev.updooters.entities.Account;
@@ -43,5 +44,13 @@ public class ThreadServiceImpl implements ThreadService{
             return getAllThreads().stream().filter(thread -> thread.getAccountId() == t.getAccountId()).collect(Collectors.toList());
 
         return null;
+    }
+
+    @Override
+    public int updootThread(int threadId) {
+        Thread thread = this.threadRepo.findById(threadId).get();
+        thread.setUpdoot(thread.getUpdoot() + 1);
+        this.threadRepo.save(thread);
+        return thread.getUpdoot();
     }
 }

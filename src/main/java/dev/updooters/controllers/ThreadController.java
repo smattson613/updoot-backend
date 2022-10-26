@@ -27,9 +27,13 @@ public class ThreadController {
 
     // could user a query param in getThreads instead of a separate route, but it's all good
     @GetMapping("/{username}")
-    public List<Thread> getUserThreads(@PathVariable("username") String username)
-    {
+    public List<Thread> getUserThreads(@PathVariable("username") String username) {
         return threadService.getAllUserThreads(username);
+    }
+
+    @PatchMapping("/{id}")
+    public int updootThread(@PathVariable("id") int id){
+        return this.threadService.updootThread(id);
     }
 
 }
