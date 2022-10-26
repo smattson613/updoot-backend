@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ThreadRepo extends JpaRepository<Thread, Integer> {
+    Thread findByThreadId(int threadId);
 }

@@ -20,6 +20,11 @@ public class ThreadController {
         return this.threadService.createThread(thread);
     }
 
+    @GetMapping("/single/{id}")
+    public Thread getSingleThread(@PathVariable("id") String id){
+        return this.threadService.getSingleThread(Integer.parseInt(id));
+    }
+
     @GetMapping
     public List<Thread> getThreads(){
         return threadService.getAllThreads();

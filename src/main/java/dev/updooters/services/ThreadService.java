@@ -4,6 +4,7 @@ import dev.updooters.entities.Thread;
 import java.util.List;
 
 public interface ThreadService {
+    Thread getSingleThread(int id);
 
     Thread createThread(Thread thread);
     

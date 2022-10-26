@@ -17,8 +17,13 @@ public class ThreadServiceImpl implements ThreadService{
 
     @Autowired
     AccountService accountService;
-  
-      @Override
+
+    @Override
+    public Thread getSingleThread(int id) {
+        return this.threadRepo.findByThreadId(id);
+    }
+
+    @Override
     public Thread createThread(Thread thread) {
         if(thread.getTitle().equals("")) {
             throw new ContentEmptyException();
