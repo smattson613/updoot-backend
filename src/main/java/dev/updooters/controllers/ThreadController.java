@@ -31,6 +31,11 @@ public class ThreadController {
         return threadService.getAllUserThreads(username);
     }
 
+    @GetMapping("/single/{id}")
+    public Thread getUserThreadById(@PathVariable("id") int id) {
+        return threadService.getThreadById(id);
+    }
+
     @PatchMapping("/{id}")
     public int updootThread(@PathVariable("id") int id){
         return this.threadService.updootThread(id);

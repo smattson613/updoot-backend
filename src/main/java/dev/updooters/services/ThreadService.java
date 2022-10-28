@@ -13,4 +13,6 @@ public interface ThreadService {
 
     int updootThread(int threadId);
 
+    Thread getThreadById(int id);
+
 }

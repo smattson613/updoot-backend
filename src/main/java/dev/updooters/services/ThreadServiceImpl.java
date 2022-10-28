@@ -53,4 +53,9 @@ public class ThreadServiceImpl implements ThreadService{
         this.threadRepo.save(thread);
         return thread.getUpdoot();
     }
+
+    @Override
+    public Thread getThreadById(int id) {
+        return this.threadRepo.findById(id).get();
+    }
 }
